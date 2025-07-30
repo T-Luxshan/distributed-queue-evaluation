@@ -10,10 +10,10 @@ const redisAddr = "127.0.0.1:6379"
 
 func asynqImp(client *asynq.Client) {
 
-	userID := 456
-	requestID := "req-456"
+	userID := 123
+	requestID := "req-123"
 
-	fare := 100
+	fare := 1000
 
 	tasks.EnqueueTask(client, userID, fare, requestID)
 }
