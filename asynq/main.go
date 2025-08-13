@@ -14,6 +14,11 @@ func asynqImp(client *asynq.Client) {
 	requestID := "req-123"
 
 	tasks.EnqueueTask(client, userID, requestID)
+
+	err := tasks.PeekNextTask(redisAddr, "low")
+	if err != nil {
+		fmt.Println(err)
+	}
 }
 
 func main() {
