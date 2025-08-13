@@ -13,9 +13,7 @@ func asynqImp(client *asynq.Client) {
 	userID := 123
 	requestID := "req-123"
 
-	fare := 1000
-
-	tasks.EnqueueTask(client, userID, fare, requestID)
+	tasks.EnqueueTask(client, userID, requestID)
 }
 
 func main() {
