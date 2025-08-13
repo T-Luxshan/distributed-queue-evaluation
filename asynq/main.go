@@ -19,6 +19,11 @@ func asynqImp(client *asynq.Client) {
 	if err != nil {
 		fmt.Println(err)
 	}
+
+	err = tasks.DequeueAll(redisAddr, "default")
+	if err != nil {
+		fmt.Println(err)
+	}
 }
 
 func main() {
