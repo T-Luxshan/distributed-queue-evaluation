@@ -1,33 +1,24 @@
 package tasks
 
 import (
-	"errors"
 	"github.com/hibiken/asynq"
 	"log"
+	"math/rand"
 )
 
-const RedisAddr = "127.0.0.1:6379"
+//const RedisAddr = "127.0.0.1:6379"
 
-func chooseQueue(fair int) (string, error) {
-	if fair <= 0 {
-		return "", errors.New("fair must be greater than zero")
-	}
-	switch {
-	case fair >= 1500:
-		return "critical", nil
-	case fair >= 500:
-		return "default", nil
-	default:
-		return "low", nil
-	}
+func chooseQueue() string {
+
+	queueTypes := []string{"critical", "default", "low"}
+	randomQ := queueTypes[rand.Intn(len(queueTypes))]
+
+	return randomQ
 }
 
-func EnqueueTask(client *asynq.Client, userID, fare int, rideID string) {
+func EnqueueTask(client *asynq.Client, userID int, rideID string) {
 
-	queueName, err := chooseQueue(fare)
-	if err != nil {
-		log.Fatalf("Failed to choose queue: %v", err)
-	}
+	queueName := chooseQueue()
 
 	task, err := NewUserRequestTask(userID, rideID)
 	if err != nil {
