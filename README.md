@@ -3,7 +3,7 @@
 
 This repository contains implementations and benchmarks of various Go-based distributed queue systems evaluated for handling high-load scenarios. The goal is to buffer user requests during peak load, process them fairly, and maintain low latency with high throughput. Below is a brief explanation of each queue system, their folder structures, environment setup instructions, dependencies, and links to their respective repositories for further details.
 
-**For more understanding in each distributed queue technologies refer these articles.**
+**For more understanding in each distributed queue technologies, Refer these articles.**
 - [Smarter Throttling with Distributed Queues in Go: A Performance Evaluation - Part 1](https://medium.com/pickme-engineering-blog/smarter-throttling-with-distributed-queues-in-go-a-performance-evaluation-part-1-3d8410b4adb1)
 - [Smarter Throttling with Distributed Queues in Go: A Performance Evaluation — Part 2](https://medium.com/pickme-engineering-blog/smarter-throttling-with-distributed-queues-in-go-a-performance-evaluation-part-2-5cca64e9c50e)
 
