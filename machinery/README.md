@@ -1,16 +1,11 @@
-
 # Distributed Queue Evaluation in Go
 
 This repository contains implementations and benchmarks of various Go-based distributed queue systems evaluated for handling high-load scenarios. The goal is to buffer user requests during peak load, process them fairly, and maintain low latency with high throughput. Below is a brief explanation of each queue system, their folder structures, environment setup instructions, dependencies, and links to their respective repositories for further details.
 
-**For more understanding in each distributed queue technologies refer these articles.**
-- [Smarter Throttling with Distributed Queues in Go: A Performance Evaluation - Part 1](https://medium.com/pickme-engineering-blog/smarter-throttling-with-distributed-queues-in-go-a-performance-evaluation-part-1-3d8410b4adb1)
-- [Smarter Throttling with Distributed Queues in Go: A Performance Evaluation — Part 2](https://medium.com/pickme-engineering-blog/smarter-throttling-with-distributed-queues-in-go-a-performance-evaluation-part-2-5cca64e9c50e)
-
 ## Queue Systems Evaluated
 
 ### 1. Asynq
-Asynq is a Redis-backed distributed task queue for Go, designed for scalability and ease of use. It supports task scheduling, retries, priorities, monitoring via CLI and Web UI, and integration with Prometheus. Asynq is ideal for production-grade systems needing robust task management.
+**Description**: Asynq is a Redis-backed distributed task queue for Go, designed for scalability and ease of use. It supports task scheduling, retries, priorities, monitoring via CLI and Web UI, and integration with Prometheus. Asynq is ideal for production-grade systems needing robust task management.
 
 **Folder Structure**:
 ```
@@ -35,11 +30,12 @@ docker run -p 6379:6379 redis
 go get github.com/hibiken/asynq
 ```
 
-**Asynq GitHub Repo**: [https://github.com/hibiken/asynq](https://github.com/hibiken/asynq)
+**For More Info**: [Asynq GitHub Repository](https://github.com/hibiken/asynq)
+
+---
 
 ### 2. xsync (MPMCQueue)
-
-xsync provides a high-performance, lock-free, in-memory multi-producer, multi-consumer (MPMC) queue optimized for concurrent Go applications. It uses atomic operations to minimize contention, making it suitable for high-throughput, low-latency systems without persistence needs.
+**Description**: xsync provides a high-performance, lock-free, in-memory multi-producer, multi-consumer (MPMC) queue optimized for concurrent Go applications. It uses atomic operations to minimize contention, making it suitable for high-throughput, low-latency systems without persistence needs.
 
 **Folder Structure**:
 ```
@@ -61,12 +57,12 @@ xsyncImp/
 go get github.com/puzpuzpuz/xsync/v3
 ```
 
-**xsync GitHub Repo**: [https://github.com/puzpuzpuz/xsync](https://github.com/puzpuzpuz/xsync)
+**For More Info**: [xsync GitHub Repository](https://github.com/puzpuzpuz/xsync)
 
+---
 
 ### 3. goq
-
-goq is a minimal, secure distributed job queue with TLS 1.3 and QUIC support, designed for fast job dispatching and fault tolerance. It was dropped from full benchmarking due to high resource consumption at low volumes but is included for completeness.
+**Description**: goq is a minimal, secure distributed job queue with TLS 1.3 and QUIC support, designed for fast job dispatching and fault tolerance. It was dropped from full benchmarking due to high resource consumption at low volumes but is included for completeness.
 
 **Folder Structure**:
 ```
@@ -104,11 +100,12 @@ source ~/.bashrc
 goq serve &
 ```
 
-**goq GitHub Repo**: [https://github.com/glycerine/goq](https://github.com/glycerine/goq)
+**For More Info**: [goq GitHub Repository](https://github.com/glycerine/goq)
+
+---
 
 ### 4. Faktory
-
-Faktory is a language-agnostic background job system with a centralized work server, supporting job retries, expiration, and a Web UI for monitoring. It simplifies client-side logic but does not support traditional queue operations like peek.
+**Description**: Faktory is a language-agnostic background job system with a centralized work server, supporting job retries, expiration, and a Web UI for monitoring. It simplifies client-side logic but does not support traditional queue operations like peek.
 
 **Folder Structure**:
 ```
@@ -132,12 +129,12 @@ docker run -d -p 7419:7419 -p 7420:7420 -p 7421:7421 --name faktory contribsys/f
 go get -u github.com/contribsys/faktory_worker_go
 ```
 
-**Faktory GitHub Repo**: [https://github.com/contribsys/faktory](https://github.com/contribsys/faktory)
+**For More Info**: [Faktory GitHub Repository](https://github.com/contribsys/faktory)
 
 ---
 
 ### 5. Machinery
-Machinery is a flexible distributed task queue supporting multiple brokers (Redis, RabbitMQ, AWS SQS) and result backends. It offers task chaining and retry logic but consumes more resources and may encounter I/O timeouts under high load.
+**Description**: Machinery is a flexible distributed task queue supporting multiple brokers (Redis, RabbitMQ, AWS SQS) and result backends. It offers task chaining and retry logic but consumes more resources and may encounter I/O timeouts under high load.
 
 **Folder Structure**:
 ```
@@ -170,7 +167,7 @@ docker run -d --hostname rabbitmq-host --name rabbitmq -p 5672:5672 -p 15672:156
 go get github.com/RichardKnop/machinery/v1
 ```
 
-**Machinery GitHub Repo**: [https://github.com/RichardKnop/machinery](https://github.com/RichardKnop/machinery)
+**For More Info**: [Machinery GitHub Repository](https://github.com/RichardKnop/machinery)
 
 ---
 
